@@ -67,33 +67,33 @@ $summaryCards = [
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-6 fade-up delay-3">
 @php
 $items = [
-    ['Mango',      'MNG-001','285 kg','Jun 26','Davao Fresh Farms','₱120/kg','Available','badge-green','g-violet',92,'Fresh'],
-    ['Durian',     'DUR-112','145 kg','Jun 25','Mt. Apo Growers',  '₱320/kg','Available','badge-green','g-green', 78,'Good'],
-    ['Pomelo',     'POM-034','8 kg',  'Jul 2', 'Sta. Cruz Orchards','₱70/kg','Critical', 'badge-red',  'g-rose',  16,'Critical'],
-    ['Mangosteen', 'MGS-078','92 kg', 'Jun 28','Davao Fresh Farms','₱170/kg','Available','badge-green','g-indigo',85,'Fresh'],
-    ['Lanzones',   'LNZ-055','22 kg', 'Jun 27','Mt. Apo Growers',  '₱85/kg', 'Low Stock','badge-amber','g-amber', 44,'Fair'],
-    ['Pineapple',  'PNA-019','118 kg','Jun 30','Sta. Cruz Orchards','₱75/kg','Available','badge-green','g-blue',  88,'Fresh'],
-    ['Banana',     'BNA-041','210 kg','Jun 29','Davao Fresh Farms','₱42/kg', 'Available','badge-green','g-teal',  95,'Excellent'],
-    ['Mango',      'MNG-002','155 kg','Jun 24','Mt. Apo Growers',  '₱118/kg','Low Stock','badge-amber','g-violet',35,'Fair'],
-    ['Durian',     'DUR-113','0 kg',  '—',     'Mt. Apo Growers',  '₱320/kg','Out of Stock','badge-gray','g-rose', 0,'Depleted'],
+    ['Mango',      'MNG-001','285 kg','Jun 26','Davao Fresh Farms','₱120/kg','Available','badge-green', 92,'Fresh'],
+    ['Durian',     'DUR-112','145 kg','Jun 25','Mt. Apo Growers',  '₱320/kg','Available','badge-green', 78,'Good'],
+    ['Pomelo',     'POM-034','8 kg',  'Jul 2', 'Sta. Cruz Orchards','₱70/kg','Critical', 'badge-red',   16,'Critical'],
+    ['Mangosteen', 'MGS-078','92 kg', 'Jun 28','Davao Fresh Farms','₱170/kg','Available','badge-green', 85,'Fresh'],
+    ['Lanzones',   'LNZ-055','22 kg', 'Jun 27','Mt. Apo Growers',  '₱85/kg', 'Low Stock','badge-amber', 44,'Fair'],
+    ['Pineapple',  'PNA-019','118 kg','Jun 30','Sta. Cruz Orchards','₱75/kg','Available','badge-green', 88,'Fresh'],
+    ['Banana',     'BNA-041','210 kg','Jun 29','Davao Fresh Farms','₱42/kg', 'Available','badge-green', 95,'Excellent'],
+    ['Mango',      'MNG-002','155 kg','Jun 24','Mt. Apo Growers',  '₱118/kg','Low Stock','badge-amber', 35,'Fair'],
+    ['Durian',     'DUR-113','0 kg',  '—',     'Mt. Apo Growers',  '₱320/kg','Out of Stock','badge-gray', 0,'Depleted'],
 ];
 $fruitIconPath = 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4';
 @endphp
 @foreach($items as $it)
 <div class="card overflow-hidden card-lift fade-up delay-{{ min($loop->index+1,8) }}"
      x-on:click="viewModal=true; selected='{{ $it[1] }}'">
-    {{-- Colored header --}}
-    <div class="{{ $it[8] }} p-5 relative">
+    {{-- Neutral header --}}
+    <div class="bg-gray-50 border-b border-gray-100 px-5 pt-5 pb-4 relative">
         <div class="absolute top-3 right-3">
             <span class="badge {{ $it[7] }} text-[10px]">{{ $it[6] }}</span>
         </div>
-        <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-3 backdrop-blur-sm">
-            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+        <div class="w-10 h-10 bg-white border border-gray-200 rounded-xl flex items-center justify-center mb-3 shadow-sm">
+            <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="{{ $fruitIconPath }}"/>
             </svg>
         </div>
-        <p class="font-black text-white text-[17px] leading-tight">{{ $it[0] }}</p>
-        <p class="text-white/70 text-[11px] font-medium mt-0.5 font-mono">{{ $it[1] }}</p>
+        <p class="font-black text-gray-900 text-[16px] leading-tight">{{ $it[0] }}</p>
+        <p class="text-gray-400 text-[11px] font-medium mt-0.5 font-mono">{{ $it[1] }}</p>
     </div>
     {{-- Card body --}}
     <div class="p-4">
@@ -108,34 +108,34 @@ $fruitIconPath = 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 
             </div>
         </div>
         <div class="progress-bar mb-3">
-            <div class="progress-fill {{ $it[9] < 20 ? 'bg-red-500' : ($it[9] < 50 ? 'bg-amber-400' : 'bg-violet-600') }}"
-                 style="width:{{ $it[9] }}%"></div>
+            <div class="progress-fill {{ $it[8] < 20 ? 'bg-red-400' : ($it[8] < 50 ? 'bg-amber-400' : 'bg-violet-500') }}"
+                 style="width:{{ $it[8] }}%"></div>
         </div>
-        <div class="flex items-center justify-between text-[11.5px] text-gray-500 mb-3">
+        <div class="flex items-center justify-between text-[11.5px] text-gray-400 mb-3">
             <span class="flex items-center gap-1">
-                <svg class="w-3 h-3 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                 </svg>
                 {{ $it[4] }}
             </span>
             <span class="flex items-center gap-1">
-                <svg class="w-3 h-3 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                 </svg>
                 Exp: {{ $it[3] }}
             </span>
         </div>
         <div class="flex items-center justify-between">
-            <span class="text-[12px] font-semibold text-gray-600">
-                Freshness: <span class="{{ $it[9] > 70 ? 'text-green-600' : ($it[9] > 40 ? 'text-amber-600' : 'text-red-600') }}">{{ $it[10] }}</span>
+            <span class="text-[12px] font-medium text-gray-500">
+                Freshness: <span class="{{ $it[8] > 70 ? 'text-green-600' : ($it[8] > 40 ? 'text-amber-500' : 'text-red-500') }} font-semibold">{{ $it[9] }}</span>
             </span>
             <div class="flex gap-1.5">
                 <button @click.stop="editModal=true; selected='{{ $it[0] }}'"
-                        class="p-1.5 text-gray-400 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-colors">
+                        class="p-1.5 text-gray-300 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                 </button>
                 <button @click.stop="deleteModal=true; selected='{{ $it[0] }}'"
-                        class="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">
+                        class="p-1.5 text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors">
                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                 </button>
             </div>
@@ -148,25 +148,25 @@ $fruitIconPath = 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 
 {{-- View Modal --}}
 <div x-show="viewModal" @click.self="viewModal=false" class="modal-bg fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4" x-cloak x-transition>
     <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg border border-violet-100" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
-        <div class="g-violet p-6 relative rounded-t-3xl">
-            <div class="absolute top-4 right-4"><button @click="viewModal=false" class="text-white/70 hover:text-white p-1.5 rounded-xl hover:bg-white/10 transition-colors"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button></div>
+        <div class="bg-gray-50 border-b border-gray-100 p-6 relative rounded-t-3xl">
+            <div class="absolute top-4 right-4"><button @click="viewModal=false" class="text-gray-400 hover:text-gray-600 p-1.5 rounded-xl hover:bg-gray-200 transition-colors"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button></div>
             <div class="flex items-center gap-4">
-                <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
-                    <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                <div class="w-14 h-14 bg-white border border-gray-200 rounded-2xl flex items-center justify-center shadow-sm">
+                    <svg class="w-7 h-7 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-black text-white">Mango</h3>
-                    <p class="text-white/70 text-[13px] font-mono" x-text="'Batch: '+selected"></p>
-                    <span class="badge bg-white/20 text-white text-[10px] mt-1">Available</span>
+                    <h3 class="text-2xl font-black text-gray-900">Mango</h3>
+                    <p class="text-gray-500 text-[13px] font-mono" x-text="'Batch: '+selected"></p>
+                    <span class="badge badge-green text-[10px] mt-1">Available</span>
                 </div>
             </div>
         </div>
         <div class="p-6 grid grid-cols-2 gap-4">
             @foreach([['Current Stock','285 kg'],['Unit Price','₱120/kg'],['Supplier','Davao Fresh Farms'],['Expiration','Jun 26, 2026'],['Received Date','Jun 16, 2026'],['Storage','Room A · Shelf 3'],['Freshness Score','92/100'],['Spoilage Risk','8%']] as [$l,$v])
-            <div class="bg-[#F5F3FF] rounded-xl p-3.5 border border-violet-100">
-                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wide">{{ $l }}</p>
+            <div class="bg-gray-50 rounded-xl p-3.5 border border-gray-100">
+                <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wide">{{ $l }}</p>
                 <p class="text-[14px] font-bold text-gray-900 mt-1">{{ $v }}</p>
             </div>
             @endforeach

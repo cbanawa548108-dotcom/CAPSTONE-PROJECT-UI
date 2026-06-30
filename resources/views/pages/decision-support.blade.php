@@ -24,74 +24,53 @@
 @php
 $actionCards = [
     [
-        'grad'       => 'g-rose',
-        'border'     => 'border-red-400',
         'badgeClass' => 'badge-red',
         'urgency'    => 'Urgent',
         'title'      => 'Restock Now',
         'cardIcon'   => 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4',
-        'fruitGrad'  => 'g-orange',
-        'fruitIcon'  => 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z',
         'body'       => 'Pomelo stock at 8&nbsp;kg — critically low. Predicted demand: 20&nbsp;kg/day. Stock runs out in &lt;12 hours.',
         'progLabel'  => 'Stock Level',
         'progVal'    => '16%',
         'progPct'    => 16,
-        'progColor'  => 'bg-red-500',
-        'progText'   => 'text-red-600',
         'kvLabel'    => 'Recommended Order',
         'kvVal'      => '50 kg',
         'btn'        => 'Order Now',
-        'btnClass'   => 'btn-violet',
     ],
     [
-        'grad'       => 'g-orange',
-        'border'     => 'border-orange-400',
         'badgeClass' => 'badge-orange',
         'urgency'    => 'High Priority',
         'title'      => 'Sell Immediately',
         'cardIcon'   => 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z',
-        'fruitGrad'  => 'g-amber',
-        'fruitIcon'  => 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4',
         'body'       => 'Mango batch MNG-002 has 78% spoilage risk. 155&nbsp;kg at risk — potential loss: &#8369;18,290 if not sold in 24h.',
         'progLabel'  => 'Spoilage Risk',
         'progVal'    => '78%',
         'progPct'    => 78,
-        'progColor'  => 'bg-orange-500',
-        'progText'   => 'text-orange-600',
         'kvLabel'    => 'Suggested Discount',
         'kvVal'      => '-20%',
         'btn'        => 'Apply Discount',
-        'btnClass'   => 'g-orange text-white',
     ],
     [
-        'grad'       => 'g-blue',
-        'border'     => 'border-blue-400',
         'badgeClass' => 'badge-blue',
         'urgency'    => 'Revenue',
         'title'      => 'Apply Discount',
         'cardIcon'   => 'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z',
-        'fruitGrad'  => 'g-green',
-        'fruitIcon'  => 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4',
         'body'       => 'Pineapple demand is 20% below forecast. Apply 10% discount to stimulate sales and clear 118&nbsp;kg.',
         'progLabel'  => 'Demand Gap',
         'progVal'    => '-20%',
         'progPct'    => 20,
-        'progColor'  => 'bg-blue-500',
-        'progText'   => 'text-blue-600',
         'kvLabel'    => 'Expected Revenue Boost',
         'kvVal'      => '+&#8369;2,800',
         'btn'        => 'Apply Now',
-        'btnClass'   => 'btn-violet',
     ],
 ];
 @endphp
 <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-7 fade-up delay-1">
     @foreach($actionCards as $card)
-    <div class="card p-6 border-l-4 {{ $card['border'] }} card-lift">
+    <div class="card p-6 card-lift">
         <div class="flex items-start justify-between mb-4">
             <div class="flex items-center gap-3">
                 <div class="icon-ring">
-                    <svg class="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                         <path stroke-linecap="round" stroke-linejoin="round" d="{{ $card['cardIcon'] }}"/>
                     </svg>
                 </div>
@@ -100,29 +79,23 @@ $actionCards = [
                     <h3 class="font-bold text-gray-900 text-[15px] mt-1">{{ $card['title'] }}</h3>
                 </div>
             </div>
-            {{-- Fruit icon chip --}}
-            <div class="w-10 h-10 {{ $card['fruitGrad'] }} rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="{{ $card['fruitIcon'] }}"/>
-                </svg>
-            </div>
         </div>
-        <p class="text-[13px] text-gray-600 leading-relaxed mb-4">{!! $card['body'] !!}</p>
+        <p class="text-[13px] text-gray-500 leading-relaxed mb-4">{!! $card['body'] !!}</p>
         <div class="bg-gray-50 rounded-2xl p-3.5 mb-4 border border-gray-100">
             <div class="flex items-center justify-between text-[12px] mb-2">
-                <span class="font-semibold text-gray-700">{{ $card['progLabel'] }}</span>
-                <span class="font-black {{ $card['progText'] }}">{{ $card['progVal'] }}</span>
+                <span class="font-semibold text-gray-600">{{ $card['progLabel'] }}</span>
+                <span class="font-black text-gray-900">{{ $card['progVal'] }}</span>
             </div>
             <div class="progress-bar">
-                <div class="{{ $card['progColor'] }} h-full rounded-full" style="width:{{ $card['progPct'] }}%"></div>
+                <div class="bg-violet-500 h-full rounded-full" style="width:{{ $card['progPct'] }}%"></div>
             </div>
         </div>
         <div class="flex items-center justify-between mb-5">
-            <span class="text-[12.5px] text-gray-500">{{ $card['kvLabel'] }}</span>
+            <span class="text-[12.5px] text-gray-400">{{ $card['kvLabel'] }}</span>
             <span class="font-black text-gray-900 text-[15px]">{!! $card['kvVal'] !!}</span>
         </div>
         <div class="flex gap-2">
-            <button class="btn {{ $card['btnClass'] }} btn-md flex-1 text-[12.5px]">{{ $card['btn'] }}</button>
+            <button class="btn btn-violet btn-md flex-1 text-[12.5px]">{{ $card['btn'] }}</button>
             <button class="btn btn-outline btn-md flex-1 text-[12.5px]">Dismiss</button>
         </div>
     </div>
@@ -193,18 +166,15 @@ $actionCards = [
         <div class="space-y-3">
             @php
             $invInsights = [
-                ['Mango',     'Overstocked 20%',          'Reduce next order',        'amber'],
-                ['Durian',    'Optimal level',             'Maintain order size',      'green'],
-                ['Pomelo',    'Critical shortage',         'Order 50 kg now',          'red'],
-                ['Lanzones',  'Slightly understocked',     'Increase order 15%',       'blue'],
-                ['Pineapple', 'Overstocked, low demand',  'Discount + reduce order',  'orange'],
+                ['Mango',     'Overstocked 20%',          'Reduce next order',        'neutral'],
+                ['Durian',    'Optimal level',             'Maintain order size',      'neutral'],
+                ['Pomelo',    'Critical shortage',         'Order 50 kg now',          'alert'],
+                ['Lanzones',  'Slightly understocked',     'Increase order 15%',       'neutral'],
+                ['Pineapple', 'Overstocked, low demand',  'Discount + reduce order',  'neutral'],
             ];
             $insightMap = [
-                'amber'  => ['bg-amber-50','border-amber-200','text-amber-800','text-amber-700'],
-                'green'  => ['bg-green-50','border-green-200','text-green-800','text-green-700'],
-                'red'    => ['bg-red-50',  'border-red-200',  'text-red-800',  'text-red-700'],
-                'blue'   => ['bg-blue-50', 'border-blue-200', 'text-blue-800', 'text-blue-700'],
-                'orange' => ['bg-orange-50','border-orange-200','text-orange-800','text-orange-700'],
+                'neutral' => ['bg-gray-50', 'border-gray-100', 'text-gray-800', 'text-gray-500'],
+                'alert'   => ['bg-gray-50', 'border-gray-200', 'text-gray-900', 'text-gray-500'],
             ];
             @endphp
             @foreach($invInsights as [$name,$status,$rec,$color])
@@ -231,19 +201,19 @@ $actionCards = [
         </div>
         <div class="space-y-4">
             @foreach([
-                ['Peak Sales Hours',     '10AM–1PM and 4PM–6PM show highest traffic. Schedule more staff during these windows.',92,'g-violet'],
-                ['Best-Performing Fruit','Mango generates 35% of total revenue. Prioritize stock availability.',88,'g-green'],
-                ['Weekend Surge',        'Sales increase 40% on Saturdays. Prepare extra stock by Friday.',85,'g-blue'],
-                ['Bundle Pricing',       'Mango + Pineapple bundles could boost avg sale by 18%.',78,'g-indigo'],
-            ] as [$title,$desc,$conf,$grad])
+                ['Peak Sales Hours',     '10AM–1PM and 4PM–6PM show highest traffic. Schedule more staff during these windows.',92],
+                ['Best-Performing Fruit','Mango generates 35% of total revenue. Prioritize stock availability.',88],
+                ['Weekend Surge',        'Sales increase 40% on Saturdays. Prepare extra stock by Friday.',85],
+                ['Bundle Pricing',       'Mango + Pineapple bundles could boost avg sale by 18%.',78],
+            ] as [$title,$desc,$conf])
             <div>
                 <div class="flex items-center justify-between mb-1.5">
                     <p class="text-[13px] font-bold text-gray-900">{{ $title }}</p>
-                    <span class="badge badge-green text-[10.5px]">{{ $conf }}% confidence</span>
+                    <span class="badge badge-gray text-[10.5px]">{{ $conf }}%</span>
                 </div>
                 <p class="text-[12.5px] text-gray-500 mb-2 leading-relaxed">{{ $desc }}</p>
                 <div class="progress-bar">
-                    <div class="{{ $grad }} h-full rounded-full" style="width:{{ $conf }}%"></div>
+                    <div class="bg-gray-300 h-full rounded-full" style="width:{{ $conf }}%"></div>
                 </div>
             </div>
             @endforeach
