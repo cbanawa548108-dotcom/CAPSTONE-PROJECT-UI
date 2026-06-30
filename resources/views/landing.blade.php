@@ -35,7 +35,7 @@
 <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-violet-100/50 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 g-violet rounded-xl flex items-center justify-center shadow-lg shadow-violet-300/40 text-xl">🍋</div>
+            <div class="w-10 h-10 g-violet rounded-xl flex items-center justify-center shadow-lg shadow-violet-300/40"><svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div>
             <div>
                 <p class="font-black text-gray-900 text-[15px]" style="font-family:Poppins,sans-serif">FreshTrack</p>
                 <p class="text-[10px] text-violet-500 font-semibold -mt-0.5">AI-Powered Platform</p>
@@ -82,10 +82,10 @@
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <a href="{{ route('login') }}" class="btn-hero bg-white text-violet-700 shadow-xl shadow-violet-900/30">
-                        🚀 Get Started Free
+                        Get Started Free
                     </a>
                     <a href="{{ route('dashboard') }}" class="btn-hero bg-white/15 backdrop-blur-sm border border-white/30 text-white hover:bg-white/25">
-                        📊 View Live Demo →
+                        View Live Demo →
                     </a>
                 </div>
                 <div class="flex items-center gap-6 mt-10">
@@ -101,7 +101,7 @@
             <div class="hidden lg:block">
                 <div class="hero-card p-6 mb-4">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-xl">🔮</div>
+                        <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center"><svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
                         <div>
                             <p class="text-white font-bold text-sm">AI Sales Forecast</p>
                             <p class="text-white/60 text-[11px]">Next 7 days prediction</p>
@@ -150,32 +150,34 @@
 <section id="features" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
-            <span class="inline-flex items-center gap-2 bg-violet-50 text-violet-700 text-[12px] font-bold px-4 py-2 rounded-full border border-violet-200 mb-4">✨ Powered by Artificial Intelligence</span>
+            <span class="inline-flex items-center gap-2 bg-violet-50 text-violet-700 text-[12px] font-bold px-4 py-2 rounded-full border border-violet-200 mb-4">Powered by Artificial Intelligence</span>
             <h2 class="text-4xl font-black text-gray-900 mb-4">Everything You Need to Run<br><span class="text-violet-600">a Smarter Fruit Business</span></h2>
             <p class="text-gray-500 text-[16px] max-w-2xl mx-auto">From real-time inventory tracking to AI-powered sales forecasting — FreshTrack gives Davao fruit vendors an enterprise-grade edge.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach([
-                ['🔮','AI Sales Forecast','Predict fruit demand 7 days ahead with 96%+ accuracy using machine learning models trained on local market data.','violet'],
-                ['📦','Smart Inventory','Real-time batch tracking with expiry alerts, stock levels, and automated restock recommendations.','green'],
-                ['⚠️','Spoilage Prediction','AI-powered spoilage risk analysis using temperature, humidity, and CO₂ sensor data.','red'],
-                ['📷','Image Processing','Upload fruit photos for instant quality grading — ripeness score, defect detection, and grade classification.','blue'],
-                ['🧠','Decision Support','Actionable recommendations: sell now, apply discounts, reorder, and optimize pricing for maximum profit.','purple'],
-                ['📈','Analytics Dashboard','Executive-grade charts: revenue trends, forecast accuracy, waste reduction, and profit margins.','teal'],
-            ] as [$icon,$title,$desc,$color])
+            @php
+            $features = [
+                ['M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z','AI Sales Forecast','Predict fruit demand 7 days ahead with 96%+ accuracy using machine learning models trained on local market data.'],
+                ['M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4','Smart Inventory','Real-time batch tracking with expiry alerts, stock levels, and automated restock recommendations.'],
+                ['M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z','Spoilage Prediction','AI-powered spoilage risk analysis using temperature, humidity, and CO₂ sensor data.'],
+                ['M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z','Image Processing','Upload fruit photos for instant quality grading — ripeness score, defect detection, and grade classification.'],
+                ['M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z','Decision Support','Actionable recommendations: sell now, apply discounts, reorder, and optimize pricing for maximum profit.'],
+                ['M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z','Analytics Dashboard','Executive-grade charts: revenue trends, forecast accuracy, waste reduction, and profit margins.'],
+            ];
+            @endphp
+            @foreach($features as [$iconPath,$title,$desc])
             <div class="feature-card p-7">
-                <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-5 shadow-lg
-                    {{ $color==='violet'?'bg-gradient-to-br from-violet-500 to-violet-700 shadow-violet-200':
-                       ($color==='green'?'bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-emerald-200':
-                       ($color==='red'?'bg-gradient-to-br from-rose-400 to-rose-600 shadow-rose-200':
-                       ($color==='blue'?'bg-gradient-to-br from-blue-400 to-blue-600 shadow-blue-200':
-                       ($color==='purple'?'bg-gradient-to-br from-purple-400 to-purple-700 shadow-purple-200':
-                       'bg-gradient-to-br from-teal-400 to-teal-600 shadow-teal-200')))) }}">
-                    {{ $icon }}
+                <div class="w-12 h-12 bg-gray-100 border border-gray-200 rounded-2xl flex items-center justify-center mb-5">
+                    <svg class="w-6 h-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="{{ $iconPath }}"/>
+                    </svg>
                 </div>
                 <h3 class="text-[17px] font-bold text-gray-900 mb-2">{{ $title }}</h3>
                 <p class="text-gray-500 text-[13.5px] leading-relaxed">{{ $desc }}</p>
-                <a href="{{ route('dashboard') }}" class="inline-flex items-center gap-1 text-violet-600 text-[12.5px] font-semibold mt-4 hover:gap-2 transition-all">Explore feature <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                <a href="{{ route('dashboard') }}" class="inline-flex items-center gap-1 text-violet-600 text-[12.5px] font-semibold mt-4 hover:gap-2 transition-all">
+                    Explore feature
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </a>
             </div>
             @endforeach
         </div>
@@ -212,7 +214,7 @@
         <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
             @foreach([['🥭','Mango','₱125/kg','96%'],['🍑','Durian','₱320/kg','94%'],['🍈','Pomelo','₱70/kg','98%'],['🍊','Mangosteen','₱170/kg','97%'],['🫐','Lanzones','₱85/kg','95%'],['🍌','Banana','₱42/kg','96%'],['🍍','Pineapple','₱75/kg','93%']] as [$e,$n,$p,$a])
             <div class="bg-white rounded-2xl p-5 text-center border border-violet-100 hover:border-violet-300 hover:shadow-lg hover:shadow-violet-100 transition-all cursor-pointer group">
-                <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">{{ $e }}</div>
+                <div class="w-12 h-12 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-violet-50 group-hover:border-violet-200 transition-all"><svg class="w-6 h-6 text-gray-400 group-hover:text-violet-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div>
                 <p class="font-bold text-gray-900 text-[13px]">{{ $n }}</p>
                 <p class="text-violet-600 text-[11.5px] font-semibold">{{ $p }}</p>
                 <div class="mt-2 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full">{{ $a }} acc.</div>
@@ -226,11 +228,11 @@
 <section id="about" class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-6 text-center">
         <div class="bg-gradient-to-br from-[#F5F3FF] to-[#EDE9FE] rounded-3xl p-12 border border-violet-200">
-            <div class="text-5xl mb-4">🍋</div>
+            <div class="w-16 h-16 g-violet rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-violet-300/40"><svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div>
             <h2 class="text-4xl font-black text-gray-900 mb-4">Ready to Transform Your<br><span class="text-violet-600">Fruit Business?</span></h2>
             <p class="text-gray-500 text-[15px] mb-8 max-w-xl mx-auto">Join the future of fruit retail. AI-powered forecasting, real-time spoilage alerts, and smart inventory management — all in one platform.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="{{ route('login') }}" class="btn-hero g-violet text-white shadow-xl shadow-violet-300/50 text-[15px] px-8 py-4">🚀 Start Free Trial</a>
+                <a href="{{ route('login') }}" class="btn-hero g-violet text-white shadow-xl shadow-violet-300/50 text-[15px] px-8 py-4">Start Free Trial</a>
                 <a href="{{ route('dashboard') }}" class="btn-hero bg-white border-2 border-violet-200 text-violet-700 text-[15px] px-8 py-4">📊 Explore Demo</a>
             </div>
         </div>
@@ -243,7 +245,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
             <div>
                 <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 g-violet rounded-xl flex items-center justify-center text-xl">🍋</div>
+                    <div class="w-10 h-10 g-violet rounded-xl flex items-center justify-center"><svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div>
                     <div>
                         <p class="font-black text-[15px]" style="font-family:Poppins,sans-serif">FreshTrack</p>
                         <p class="text-violet-400 text-[10px] font-semibold">AI-Powered Platform</p>

@@ -26,7 +26,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"/>
                     </svg>
                 </div>
-                <h1 class="text-2xl font-black text-white">Good morning, Juan Dela Cruz!</h1>
+                <h1 class="text-2xl font-black text-white">Good {{ now()->hour < 12 ? 'morning' : (now()->hour < 18 ? 'afternoon' : 'evening') }}, Juan Dela Cruz!</h1>
             </div>
             <p class="text-white/75 text-[14.5px] mb-4">
                 {{ now()->format('l, F j, Y') }} · Here's your executive summary for today.

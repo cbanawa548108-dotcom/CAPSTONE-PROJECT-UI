@@ -113,11 +113,11 @@ $txns = [
     <div class="flex items-center justify-between px-6 py-4 border-t border-gray-100 bg-gray-50/50">
         <p class="text-[12.5px] text-gray-500">Showing <span class="font-bold text-gray-800">1–10</span> of <span class="font-bold text-gray-800">247</span> transactions</p>
         <div class="flex items-center gap-1.5">
-            <button class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-200 transition-colors text-sm">←</button>
+            <button class="w-8 h-8 flex items-center justify-center rounded-xl text-gray-400 hover:bg-gray-100 border border-gray-200 transition-colors"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>
             @foreach([1,2,3,'…',24,25] as $p)
             <button class="w-8 h-8 flex items-center justify-center rounded-lg text-[12.5px] font-semibold transition-all {{ $p===1 ? 'g-violet text-white shadow-sm' : 'text-gray-600 hover:bg-gray-200' }}">{{ $p }}</button>
             @endforeach
-            <button class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-200 transition-colors text-sm">→</button>
+            <button class="w-8 h-8 flex items-center justify-center rounded-xl text-gray-400 hover:bg-gray-100 border border-gray-200 transition-colors"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
         </div>
     </div>
 </div>

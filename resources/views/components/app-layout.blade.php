@@ -146,9 +146,9 @@
         .badge-green   { background: #D1FAE5; color: #059669; }
         .badge-red     { background: #FEE2E2; color: #DC2626; }
         .badge-amber   { background: #FEF3C7; color: #D97706; }
+        .badge-orange  { background: #FFF7ED; color: #EA580C; }
         .badge-blue    { background: #DBEAFE; color: #2563EB; }
         .badge-gray    { background: #F3F4F6; color: #6B7280; }
-        .badge-orange  { background: #FFF7ED; color: #EA580C; }
 
         /* ── Form inputs ── */
         .inp {

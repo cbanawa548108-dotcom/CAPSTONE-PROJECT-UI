@@ -724,7 +724,7 @@ document.addEventListener('DOMContentLoaded',()=>{
              x-transition:enter-end="opacity-100 scale-100"
              @click.stop>
             <div class="flex items-center gap-3 mb-5">
-                <div class="w-10 h-10 g-violet rounded-2xl flex items-center justify-center shadow-lg shadow-violet-200 text-xl">🏷</div>
+                <div class="w-10 h-10 g-violet rounded-2xl flex items-center justify-center shadow-lg shadow-violet-200"><svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg></div>
                 <h3 class="font-bold text-gray-900 text-[15px]" style="font-family:Poppins,sans-serif">Apply Discount</h3>
             </div>
             <p class="text-[11.5px] text-gray-400 uppercase font-bold tracking-wide mb-2">Discount %</p>

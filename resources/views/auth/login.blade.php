@@ -39,15 +39,15 @@
         <div class="absolute inset-0 opacity-10" style="background-image:radial-gradient(circle,rgba(255,255,255,.7) 1px,transparent 1px);background-size:36px 36px"></div>
 
         {{-- floating fruits --}}
-        <div class="absolute top-16 right-16 text-7xl float-a opacity-25 select-none">🥭</div>
-        <div class="absolute top-1/3 right-8 text-5xl float-b opacity-20 select-none" style="animation-delay:.8s">🍍</div>
-        <div class="absolute bottom-24 right-20 text-6xl float-c opacity-20 select-none" style="animation-delay:1.5s">🍑</div>
-        <div class="absolute top-1/2 left-8 text-4xl float-b opacity-15 select-none" style="animation-delay:2s">🍌</div>
-        <div class="absolute bottom-40 left-1/4 text-5xl float-a opacity-15 select-none" style="animation-delay:3s">🍈</div>
+
+
+
+
+
 
         <div class="relative z-10">
             <div class="flex items-center gap-3 mb-2">
-                <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-2xl backdrop-blur-sm border border-white/20 shadow-xl">🍋</div>
+                <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20 shadow-xl"><svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div>
                 <div>
                     <p class="text-white font-black text-xl" style="font-family:Poppins,sans-serif">FreshTrack</p>
                     <p class="text-white/60 text-[11px] font-medium">AI-Powered Platform</p>
@@ -62,7 +62,7 @@
             <p class="text-white/70 text-[15px] leading-relaxed mb-8 max-w-sm">AI-powered sales forecasting, real-time spoilage prediction, and intelligent inventory management — built for Davao City fruit vendors.</p>
 
             <div class="grid grid-cols-3 gap-4">
-                @foreach([['96%','Forecast Accuracy'],['↓62%','Less Spoilage'],['₱342K','Revenue/Month']] as [$v,$l])
+                @foreach([['96%'Forecast Accuracy'],['↓62%'Less Spoilage'],['₱342K'Revenue/Month']] as [$v,$l])
                 <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-4 text-center">
                     <p class="text-green-300 font-black text-xl">{{ $v }}</p>
                     <p class="text-white/60 text-[10.5px] font-medium mt-0.5">{{ $l }}</p>
@@ -85,7 +85,7 @@
 
             {{-- Mobile logo --}}
             <div class="flex lg:hidden items-center gap-3 mb-8">
-                <div class="w-10 h-10 g-violet rounded-xl flex items-center justify-center text-xl shadow-lg shadow-violet-300/40">🍋</div>
+                <div class="w-10 h-10 g-violet rounded-xl flex items-center justify-center shadow-lg shadow-violet-300/40"><svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div>
                 <div>
                     <p class="font-black text-[15px] text-gray-900" style="font-family:Poppins,sans-serif">FreshTrack</p>
                     <p class="text-violet-500 text-[10px] font-semibold">AI-Powered Platform</p>
@@ -93,16 +93,16 @@
             </div>
 
             <div class="mb-8">
-                <h2 class="text-3xl font-black text-gray-900 mb-2">Welcome back 👋</h2>
+                <h2 class="text-3xl font-black text-gray-900 mb-2">Welcome back</h2>
                 <p class="text-gray-500 text-[14.5px]">Sign in to your FreshTrack dashboard</p>
             </div>
 
             {{-- Role selector --}}
             <div class="grid grid-cols-3 gap-3 mb-7 p-1 bg-gray-100 rounded-2xl">
-                @foreach([['👑','Owner'],['📋','Manager'],['💰','Cashier']] as $i => [$e,$r])
+                @foreach([['Owner'],['Manager'],['Cashier']] as $i => [$e,$r])
                 <button x-data :class="{{ $i }}===0 ? 'bg-white shadow-md text-violet-700 font-bold' : 'text-gray-500 hover:text-gray-700'"
                         class="flex flex-col items-center gap-1 py-3 rounded-xl text-[12px] font-semibold transition-all">
-                    <span class="text-xl">{{ $e }}</span>{{ $r }}
+                    {{ $r }}
                 </button>
                 @endforeach
             </div>
@@ -154,12 +154,12 @@
 
             <div class="bg-gradient-to-br from-violet-50 to-green-50 rounded-2xl p-4 border border-violet-100">
                 <div class="flex items-center gap-2 mb-3">
-                    <span class="text-base">🔑</span>
+                    <svg class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
                     <p class="text-[12px] font-bold text-gray-700">Demo Credentials</p>
                     <span class="ml-auto text-[10px] bg-violet-100 text-violet-700 font-bold px-2 py-0.5 rounded-full">Prototype</span>
                 </div>
                 <div class="grid grid-cols-3 gap-2 text-[11.5px]">
-                    @foreach([['👑 Owner','owner@FreshTrack.ph','Full access'],['📋 Manager','manager@FreshTrack.ph','Limited'],['💰 Cashier','cashier@FreshTrack.ph','Sales only']] as [$r,$e,$a])
+                    @foreach([['👑 Owner'owner@FreshTrack.ph'Full access'],['📋 Manager'manager@FreshTrack.ph'Limited'],['💰 Cashier'cashier@FreshTrack.ph'Sales only']] as [$r,$e,$a])
                     <div class="bg-white rounded-xl p-2.5 border border-violet-100 text-center">
                         <p class="font-bold text-gray-700 text-[11px]">{{ $r }}</p>
                         <p class="text-violet-600 font-mono text-[9.5px] mt-1">{{ $e }}</p>
