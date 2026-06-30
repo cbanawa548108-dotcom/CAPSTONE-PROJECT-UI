@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" x-data="appState()" :class="darkMode ? 'dark' : ''" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ?? 'FruitIQ — Fruit Inventory System' }}</title>
+    <title>{{ $title ?? 'FreshTrack — Fruit Inventory System' }}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
 
     <style>
         /* ═══════════════════════════════════════════════════════
-           FRUITIQ DESIGN SYSTEM — WHITE + VIOLET + GREEN
+           FreshTrack DESIGN SYSTEM — WHITE + VIOLET + GREEN
         ═══════════════════════════════════════════════════════ */
         :root {
             --white:       #FFFFFF;
@@ -209,8 +209,18 @@
         /* ── Stat ring ── */
         .stat-ring { width:48px; height:48px; border-radius:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 4px 12px rgba(0,0,0,.12); }
 
+        /* ── Icon ring (muted, neutral — reference style) ── */
+        .icon-ring {
+            width:44px; height:44px; border-radius:12px;
+            display:flex; align-items:center; justify-content:center; flex-shrink:0;
+            background:#F1F3F7;
+            border:1px solid #E5E7EB;
+            color:#8B96A8;
+        }
+        .icon-ring svg { width:20px; height:20px; stroke-width:1.6; }
+
         /* ── AI chat widget ── */
-        #ai-chat { position:fixed; bottom:24px; right:24px; z-index:999; }
+        /* Positioned inline on the component itself */
 
         /* ── Dark mode basics ── */
         .dark body { background:#0F0B1F; color:#E5E7EB; }

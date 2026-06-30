@@ -1,5 +1,5 @@
 ﻿<x-app-layout>
-<x-slot name="title">User Management — FruitIQ</x-slot>
+<x-slot name="title">User Management — FreshTrack</x-slot>
 <div x-data="{ editModal:false, deleteModal:false, addModal:false, selected:null }">
 
 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-7 fade-up">
@@ -16,13 +16,18 @@
 {{-- Role Summary --}}
 <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-7 fade-up delay-1">
     @foreach([
-        ['Owner','1 user','👑','g-violet','Full access to all features including AI, finances, and user management.','badge-violet'],
-        ['Manager','2 users','📋','g-blue','Inventory, sales, forecast. Limited settings and no user admin.','badge-blue'],
-        ['Cashier','3 users','💰','g-green','Record transactions and view basic inventory. No admin access.','badge-green'],
+        ['Owner','1 user','owner','g-violet','Full access to all features including AI, finances, and user management.','badge-violet'],
+        ['Manager','2 users','manager','g-blue','Inventory, sales, forecast. Limited settings and no user admin.','badge-blue'],
+        ['Cashier','3 users','cashier','g-green','Record transactions and view basic inventory. No admin access.','badge-green'],
     ] as [$r,$c,$e,$g,$d,$b])
     <div class="card p-5">
         <div class="flex items-center gap-3 mb-3">
-            <div class="stat-ring {{ $g }} w-12 h-12 rounded-xl shadow-md"><span class="text-xl">{{ $e }}</span></div>
+            <div class="icon-ring">
+                @if($e==='owner')<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                @elseif($e==='manager')<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                @elseif($e==='cashier')<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                @endif
+            </div>
             <div><p class="font-bold text-gray-900 text-[16px]">{{ $r }}</p><span class="badge {{ $b }} text-[11px]">{{ $c }}</span></div>
         </div>
         <p class="text-[12.5px] text-gray-500 leading-relaxed">{{ $d }}</p>
@@ -33,12 +38,12 @@
 {{-- User Cards --}}
 @php
 $users=[
-    ['JD','Juan Dela Cruz','juan@fruitiq.ph','Owner','Active','2 hours ago','g-violet','from-violet-500 to-violet-700','👑',['Full system access','Financial reports','User management','All AI features'],'badge-violet'],
-    ['MR','Maria Santos Reyes','maria@fruitiq.ph','Manager','Active','30 min ago','g-blue','from-blue-500 to-blue-700','📋',['Inventory management','Sales reports','Forecast view','Limited settings'],'badge-blue'],
-    ['PR','Pedro Garcia Reyes','pedro@fruitiq.ph','Cashier','Active','5 min ago','g-orange','from-orange-500 to-orange-700','💰',['Record sales','View inventory','Basic dashboard','No admin access'],'badge-amber'],
-    ['AG','Ana Lopez Gomez','ana@fruitiq.ph','Cashier','Active','1 hour ago','g-teal','from-teal-500 to-teal-700','💰',['Record sales','View inventory','Basic dashboard','No admin access'],'badge-amber'],
-    ['RM','Roberto Mendoza','roberto@fruitiq.ph','Manager','Inactive','3 days ago','g-indigo','from-indigo-500 to-indigo-700','📋',['Inventory management','Sales reports','Forecast view','Limited settings'],'badge-blue'],
-    ['LC','Lina Cruz','lina@fruitiq.ph','Cashier','Inactive','1 week ago','g-rose','from-rose-500 to-rose-700','💰',['Record sales','View inventory','Basic dashboard','No admin access'],'badge-amber'],
+    ['JD','Juan Dela Cruz','juan@FreshTrack.ph','Owner','Active','2 hours ago','g-violet','from-violet-500 to-violet-700','owner',['Full system access','Financial reports','User management','All AI features'],'badge-violet'],
+    ['MR','Maria Santos Reyes','maria@FreshTrack.ph','Manager','Active','30 min ago','g-blue','from-blue-500 to-blue-700','manager',['Inventory management','Sales reports','Forecast view','Limited settings'],'badge-blue'],
+    ['PR','Pedro Garcia Reyes','pedro@FreshTrack.ph','Cashier','Active','5 min ago','g-orange','from-orange-500 to-orange-700','cashier',['Record sales','View inventory','Basic dashboard','No admin access'],'badge-amber'],
+    ['AG','Ana Lopez Gomez','ana@FreshTrack.ph','Cashier','Active','1 hour ago','g-teal','from-teal-500 to-teal-700','cashier',['Record sales','View inventory','Basic dashboard','No admin access'],'badge-amber'],
+    ['RM','Roberto Mendoza','roberto@FreshTrack.ph','Manager','Inactive','3 days ago','g-indigo','from-indigo-500 to-indigo-700','manager',['Inventory management','Sales reports','Forecast view','Limited settings'],'badge-blue'],
+    ['LC','Lina Cruz','lina@FreshTrack.ph','Cashier','Inactive','1 week ago','g-rose','from-rose-500 to-rose-700','cashier',['Record sales','View inventory','Basic dashboard','No admin access'],'badge-amber'],
 ];
 @endphp
 
@@ -60,7 +65,10 @@ $users=[
             </div>
         </div>
         <div class="flex items-center gap-2 mt-4">
-            <span class="text-lg">{{ $u[8] }}</span>
+            @if($u[8]==='owner')<svg class="w-5 h-5 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            @elseif($u[8]==='manager')<svg class="w-5 h-5 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            @elseif($u[8]==='cashier')<svg class="w-5 h-5 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            @endif
             <span class="font-bold text-[16px]">{{ $u[3] }}</span>
         </div>
     </div>
@@ -106,7 +114,7 @@ $users=[
                 <div><label class="inp-label">First Name</label><input type="text" :value="editModal?'Juan':''" placeholder="First name" class="inp"></div>
                 <div><label class="inp-label">Last Name</label><input type="text" :value="editModal?'Dela Cruz':''" placeholder="Last name" class="inp"></div>
             </div>
-            <div><label class="inp-label">Email Address</label><input type="email" :value="editModal?'juan@fruitiq.ph':''" placeholder="user@fruitiq.ph" class="inp"></div>
+            <div><label class="inp-label">Email Address</label><input type="email" :value="editModal?'juan@FreshTrack.ph':''" placeholder="user@FreshTrack.ph" class="inp"></div>
             <div><label class="inp-label">Phone Number</label><input type="tel" :value="editModal?'+63 912 345 6789':''" placeholder="+63 9XX XXX XXXX" class="inp"></div>
             <div class="grid grid-cols-2 gap-3">
                 <div><label class="inp-label">Role</label><select class="inp"><option>Owner</option><option>Manager</option><option>Cashier</option></select></div>

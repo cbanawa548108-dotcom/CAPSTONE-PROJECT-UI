@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In — FruitIQ</title>
+    <title>Sign In — FreshTrack</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -49,7 +49,7 @@
             <div class="flex items-center gap-3 mb-2">
                 <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-2xl backdrop-blur-sm border border-white/20 shadow-xl">🍋</div>
                 <div>
-                    <p class="text-white font-black text-xl" style="font-family:Poppins,sans-serif">FruitIQ</p>
+                    <p class="text-white font-black text-xl" style="font-family:Poppins,sans-serif">FreshTrack</p>
                     <p class="text-white/60 text-[11px] font-medium">AI-Powered Platform</p>
                 </div>
             </div>
@@ -87,14 +87,14 @@
             <div class="flex lg:hidden items-center gap-3 mb-8">
                 <div class="w-10 h-10 g-violet rounded-xl flex items-center justify-center text-xl shadow-lg shadow-violet-300/40">🍋</div>
                 <div>
-                    <p class="font-black text-[15px] text-gray-900" style="font-family:Poppins,sans-serif">FruitIQ</p>
+                    <p class="font-black text-[15px] text-gray-900" style="font-family:Poppins,sans-serif">FreshTrack</p>
                     <p class="text-violet-500 text-[10px] font-semibold">AI-Powered Platform</p>
                 </div>
             </div>
 
             <div class="mb-8">
                 <h2 class="text-3xl font-black text-gray-900 mb-2">Welcome back 👋</h2>
-                <p class="text-gray-500 text-[14.5px]">Sign in to your FruitIQ dashboard</p>
+                <p class="text-gray-500 text-[14.5px]">Sign in to your FreshTrack dashboard</p>
             </div>
 
             {{-- Role selector --}}
@@ -114,7 +114,7 @@
                     <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
                         <svg class="w-4.5 h-4.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                     </span>
-                    <input type="email" value="owner@fruitiq.ph" placeholder="your@email.com" class="inp">
+                    <input type="email" value="owner@FreshTrack.ph" placeholder="your@email.com" class="inp">
                 </div>
             </div>
 
@@ -159,7 +159,7 @@
                     <span class="ml-auto text-[10px] bg-violet-100 text-violet-700 font-bold px-2 py-0.5 rounded-full">Prototype</span>
                 </div>
                 <div class="grid grid-cols-3 gap-2 text-[11.5px]">
-                    @foreach([['👑 Owner','owner@fruitiq.ph','Full access'],['📋 Manager','manager@fruitiq.ph','Limited'],['💰 Cashier','cashier@fruitiq.ph','Sales only']] as [$r,$e,$a])
+                    @foreach([['👑 Owner','owner@FreshTrack.ph','Full access'],['📋 Manager','manager@FreshTrack.ph','Limited'],['💰 Cashier','cashier@FreshTrack.ph','Sales only']] as [$r,$e,$a])
                     <div class="bg-white rounded-xl p-2.5 border border-violet-100 text-center">
                         <p class="font-bold text-gray-700 text-[11px]">{{ $r }}</p>
                         <p class="text-violet-600 font-mono text-[9.5px] mt-1">{{ $e }}</p>

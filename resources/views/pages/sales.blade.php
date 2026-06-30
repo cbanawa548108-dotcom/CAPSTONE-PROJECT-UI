@@ -1,5 +1,5 @@
 ﻿<x-app-layout>
-<x-slot name="title">Sales — FruitIQ</x-slot>
+<x-slot name="title">Sales — FreshTrack</x-slot>
 <div x-data="{ addModal: false, viewId: null }" @open-add.window="addModal=true">
 
 {{-- Header --}}
@@ -26,9 +26,15 @@
 
 {{-- Stats --}}
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 fade-up delay-1">
-@foreach([["Today's Total",'₱18,450','💰','g-violet'],['Transactions','42 sales','🧾','g-green'],['Avg Sale Value','₱439','📊','g-amber'],['Top Seller','Mango','🥭','g-emerald']] as [$l,$v,$i,$g])
+@foreach([["Today's Total",'₱18,450','money','g-violet'],['Transactions','42 sales','receipt','g-green'],['Avg Sale Value','₱439','chart','g-amber'],['Top Seller','Mango','box','g-emerald']] as [$l,$v,$i,$g])
 <div class="card shimmer card-lift p-5">
-    <div class="stat-ring {{ $g }} mb-3 w-10 h-10 rounded-xl shadow-md"><span class="text-xl">{{ $i }}</span></div>
+    <div class="icon-ring mb-3">
+        @if($i==='money')<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        @elseif($i==='receipt')<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        @elseif($i==='chart')<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        @elseif($i==='box')<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+        @endif
+    </div>
     <p class="text-[22px] font-black text-gray-900">{{ $v }}</p>
     <p class="text-[12.5px] text-gray-500 font-medium mt-0.5">{{ $l }}</p>
 </div>
@@ -45,8 +51,8 @@
         <input type="date" value="2026-06-23" class="inp" style="width:auto;padding:10px 14px;border-radius:12px">
         <select class="inp" style="width:auto;padding:10px 14px;border-radius:12px">
             <option>All Fruits</option>
-            <option>🥭 Mango</option><option>🍑 Durian</option><option>🍈 Pomelo</option>
-            <option>🍊 Mangosteen</option><option>🫐 Lanzones</option><option>🍌 Banana</option><option>🍍 Pineapple</option>
+            <option>Mango</option><option>Durian</option><option>Pomelo</option>
+            <option>Mangosteen</option><option>Lanzones</option><option>Banana</option><option>Pineapple</option>
         </select>
         <select class="inp" style="width:auto;padding:10px 14px;border-radius:12px">
             <option>All Status</option><option>Completed</option><option>Pending</option><option>Cancelled</option>
@@ -65,33 +71,33 @@
             <tbody>
 @php
 $txns = [
-    ['TXN-20260623-001','🥭','Mango','15 kg','₱125/kg','₱1,875','Maria Santos','Jun 23, 08:32 AM','Completed','badge-green'],
-    ['TXN-20260623-002','🍍','Pineapple','8 pcs','₱80/pc','₱640','Maria Santos','Jun 23, 09:15 AM','Completed','badge-green'],
-    ['TXN-20260623-003','🍌','Banana','20 kg','₱45/kg','₱900','Pedro Reyes','Jun 23, 10:02 AM','Completed','badge-green'],
-    ['TXN-20260623-004','🍈','Pomelo','5 pcs','₱75/pc','₱375','Pedro Reyes','Jun 23, 11:20 AM','Pending','badge-amber'],
-    ['TXN-20260623-005','🍊','Mangosteen','12 kg','₱180/kg','₱2,160','Maria Santos','Jun 23, 01:45 PM','Completed','badge-green'],
-    ['TXN-20260623-006','🫐','Lanzones','6 kg','₱90/kg','₱540','Ana Gomez','Jun 23, 02:30 PM','Completed','badge-green'],
-    ['TXN-20260623-007','🥭','Mango','25 kg','₱125/kg','₱3,125','Ana Gomez','Jun 23, 03:15 PM','Completed','badge-green'],
-    ['TXN-20260623-008','🍑','Durian','4 kg','₱350/kg','₱1,400','Pedro Reyes','Jun 23, 04:00 PM','Cancelled','badge-red'],
-    ['TXN-20260622-039','🍌','Banana','30 kg','₱45/kg','₱1,350','Maria Santos','Jun 22, 09:00 AM','Completed','badge-green'],
-    ['TXN-20260622-040','🍊','Mangosteen','8 kg','₱180/kg','₱1,440','Ana Gomez','Jun 22, 11:30 AM','Completed','badge-green'],
+    ['TXN-20260623-001','Mango','15 kg','₱125/kg','₱1,875','Maria Santos','Jun 23, 08:32 AM','Completed','badge-green'],
+    ['TXN-20260623-002','Pineapple','8 pcs','₱80/pc','₱640','Maria Santos','Jun 23, 09:15 AM','Completed','badge-green'],
+    ['TXN-20260623-003','Banana','20 kg','₱45/kg','₱900','Pedro Reyes','Jun 23, 10:02 AM','Completed','badge-green'],
+    ['TXN-20260623-004','Pomelo','5 pcs','₱75/pc','₱375','Pedro Reyes','Jun 23, 11:20 AM','Pending','badge-amber'],
+    ['TXN-20260623-005','Mangosteen','12 kg','₱180/kg','₱2,160','Maria Santos','Jun 23, 01:45 PM','Completed','badge-green'],
+    ['TXN-20260623-006','Lanzones','6 kg','₱90/kg','₱540','Ana Gomez','Jun 23, 02:30 PM','Completed','badge-green'],
+    ['TXN-20260623-007','Mango','25 kg','₱125/kg','₱3,125','Ana Gomez','Jun 23, 03:15 PM','Completed','badge-green'],
+    ['TXN-20260623-008','Durian','4 kg','₱350/kg','₱1,400','Pedro Reyes','Jun 23, 04:00 PM','Cancelled','badge-red'],
+    ['TXN-20260622-039','Banana','30 kg','₱45/kg','₱1,350','Maria Santos','Jun 22, 09:00 AM','Completed','badge-green'],
+    ['TXN-20260622-040','Mangosteen','8 kg','₱180/kg','₱1,440','Ana Gomez','Jun 22, 11:30 AM','Completed','badge-green'],
 ];
 @endphp
 @foreach($txns as $tx)
 <tr>
     <td class="font-mono text-[12px] text-gray-500">{{ $tx[0] }}</td>
-    <td><div class="flex items-center gap-2"><span class="text-lg">{{ $tx[1] }}</span><span class="font-semibold text-gray-800 text-[13.5px]">{{ $tx[2] }}</span></div></td>
+    <td><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-xl flex items-center justify-center bg-gray-100 border border-gray-200 text-gray-400 flex-shrink-0"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div><span class="font-semibold text-gray-800 text-[13.5px]">{{ $tx[1] }}</span></div></td>
+    <td class="text-gray-500 text-[13px]">{{ $tx[2] }}</td>
     <td class="text-gray-500 text-[13px]">{{ $tx[3] }}</td>
-    <td class="text-gray-500 text-[13px]">{{ $tx[4] }}</td>
-    <td class="font-bold text-gray-900">{{ $tx[5] }}</td>
+    <td class="font-bold text-gray-900">{{ $tx[4] }}</td>
     <td>
         <div class="flex items-center gap-2">
-            <div class="w-7 h-7 g-violet rounded-full flex items-center justify-center text-white text-[10px] font-bold">{{ substr($tx[6],0,1) }}</div>
-            <span class="text-[12.5px] text-gray-600">{{ $tx[6] }}</span>
+            <div class="w-7 h-7 g-violet rounded-full flex items-center justify-center text-white text-[10px] font-bold">{{ substr($tx[5],0,1) }}</div>
+            <span class="text-[12.5px] text-gray-600">{{ $tx[5] }}</span>
         </div>
     </td>
-    <td class="text-[12px] text-gray-400">{{ $tx[7] }}</td>
-    <td><span class="badge {{ $tx[9] }} text-[11px]">{{ $tx[8] }}</span></td>
+    <td class="text-[12px] text-gray-400">{{ $tx[6] }}</td>
+    <td><span class="badge {{ $tx[8] }} text-[11px]">{{ $tx[7] }}</span></td>
     <td>
         <div class="flex items-center gap-1.5">
             <button class="p-1.5 text-gray-400 hover:text-violet-600 hover:bg-violet-50 rounded-lg transition-colors"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></button>
@@ -123,14 +129,14 @@ $txns = [
          x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
         <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 g-violet rounded-xl flex items-center justify-center text-white shadow-md shadow-violet-200"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></div>
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-gray-100 border border-gray-200 text-gray-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></div>
                 <div><h3 class="font-bold text-gray-900 text-[15px]">New Transaction</h3><p class="text-[11.5px] text-gray-400">Record a new fruit sale</p></div>
             </div>
             <button @click="addModal=false" class="p-2 hover:bg-gray-100 rounded-xl text-gray-400 transition-colors"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
         </div>
         <div class="p-6 space-y-4">
             <div><label class="inp-label">Fruit Type</label>
-                <select class="inp"><option>🥭 Mango</option><option>🍑 Durian</option><option>🍈 Pomelo</option><option>🍊 Mangosteen</option><option>🫐 Lanzones</option><option>🍌 Banana</option><option>🍍 Pineapple</option></select>
+                <select class="inp"><option>Mango</option><option>Durian</option><option>Pomelo</option><option>Mangosteen</option><option>Lanzones</option><option>Banana</option><option>Pineapple</option></select>
             </div>
             <div class="grid grid-cols-2 gap-3">
                 <div><label class="inp-label">Quantity</label><input type="number" placeholder="e.g. 15" class="inp"></div>

@@ -1,5 +1,5 @@
 ﻿<x-app-layout>
-<x-slot name="title">Analytics — FruitIQ</x-slot>
+<x-slot name="title">Analytics — FreshTrack</x-slot>
 
 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-7 fade-up">
     <div>
@@ -13,9 +13,16 @@
 
 {{-- KPIs --}}
 <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-7 fade-up delay-1">
-@foreach([['Revenue','₱342,800','↑ 8.3%','g-violet','💰'],['Profit','₱144,400','↑ 15.7%','g-green','💎'],['Sales Volume','8,230 kg','↑ 11.2%','g-blue','📊'],['Waste Reduced','62%','↑ 23.4%','g-teal','♻️'],['Forecast Acc.','96.4%','↑ 1.2%','g-indigo','🎯']] as [$l,$v,$c,$g,$i])
+@foreach([['Revenue','₱342,800','↑ 8.3%','g-violet','money'],['Profit','₱144,400','↑ 15.7%','g-green','gem'],['Sales Volume','8,230 kg','↑ 11.2%','g-blue','chart'],['Waste Reduced','62%','↑ 23.4%','g-teal','recycle'],['Forecast Acc.','96.4%','↑ 1.2%','g-indigo','target']] as [$l,$v,$c,$g,$i])
 <div class="card shimmer card-lift p-5">
-    <div class="stat-ring {{ $g }} mb-3 w-10 h-10 rounded-xl shadow-md"><span class="text-xl">{{ $i }}</span></div>
+    <div class="icon-ring mb-3">
+        @if($i==='money')<svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        @elseif($i==='gem')<svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        @elseif($i==='chart')<svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        @elseif($i==='recycle')<svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        @elseif($i==='target')<svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        @endif
+    </div>
     <p class="text-[22px] font-black text-gray-900">{{ $v }}</p>
     <p class="text-[12px] text-gray-500 font-medium mt-0.5">{{ $l }}</p>
     <span class="badge badge-green text-[10.5px] mt-1.5">{{ $c }}</span>
@@ -41,9 +48,9 @@
         <p class="text-[12px] text-gray-400 mb-4">Revenue distribution this month</p>
         <canvas id="fruitPieChart" height="170"></canvas>
         <div class="mt-4 space-y-2">
-            @foreach([['🥭','Mango','24.6%','#7C3AED'],['🍑','Durian','18.2%','#10B981'],['🍊','Mangosteen','12.4%','#8B5CF6'],['🍍','Pineapple','11.1%','#3B82F6'],['🍌','Others','33.7%','#9CA3AF']] as [$e,$n,$p,$c])
+            @foreach([['Mango','24.6%','#7C3AED'],['Durian','18.2%','#10B981'],['Mangosteen','12.4%','#8B5CF6'],['Pineapple','11.1%','#3B82F6'],['Others','33.7%','#9CA3AF']] as [$n,$p,$c])
             <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full" style="background:{{ $c }}"></span><span class="text-[12.5px] text-gray-600">{{ $e }} {{ $n }}</span></div>
+                <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full" style="background:{{ $c }}"></span><span class="text-[12.5px] text-gray-600">{{ $n }}</span></div>
                 <span class="text-[12.5px] font-bold text-gray-800">{{ $p }}</span>
             </div>
             @endforeach
@@ -86,7 +93,7 @@
         <p class="text-white/70 text-[12px] font-medium mb-1">Customer Satisfaction Score</p>
         <p class="text-[40px] font-black">4.8<span class="text-[22px]">/5</span></p>
         <p class="text-white/60 text-[12px] mt-1">Based on 312 feedback responses</p>
-        <div class="flex gap-1 mt-4">@for($i=0;$i<5;$i++)<span class="text-xl">{{ $i<4?'⭐':'✨' }}</span>@endfor</div>
+        <div class="flex gap-1 mt-4">@for($i=0;$i<5;$i++)<svg class="w-5 h-5 {{ $i<4 ? 'text-yellow-300' : 'text-yellow-200' }}" fill="{{ $i<4 ? 'currentColor' : 'none' }}" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>@endfor</div>
     </div>
     <div class="rounded-3xl p-6 text-white shadow-xl" style="background:linear-gradient(135deg,#10B981,#059669)">
         <p class="text-white/70 text-[12px] font-medium mb-1">AI System Performance</p>

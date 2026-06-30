@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FruitIQ — AI-Powered Inventory & Sales Forecasting</title>
+    <title>FreshTrack — AI-Powered Inventory & Sales Forecasting</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -37,7 +37,7 @@
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 g-violet rounded-xl flex items-center justify-center shadow-lg shadow-violet-300/40 text-xl">🍋</div>
             <div>
-                <p class="font-black text-gray-900 text-[15px]" style="font-family:Poppins,sans-serif">FruitIQ</p>
+                <p class="font-black text-gray-900 text-[15px]" style="font-family:Poppins,sans-serif">FreshTrack</p>
                 <p class="text-[10px] text-violet-500 font-semibold -mt-0.5">AI-Powered Platform</p>
             </div>
         </div>
@@ -152,7 +152,7 @@
         <div class="text-center mb-16">
             <span class="inline-flex items-center gap-2 bg-violet-50 text-violet-700 text-[12px] font-bold px-4 py-2 rounded-full border border-violet-200 mb-4">✨ Powered by Artificial Intelligence</span>
             <h2 class="text-4xl font-black text-gray-900 mb-4">Everything You Need to Run<br><span class="text-violet-600">a Smarter Fruit Business</span></h2>
-            <p class="text-gray-500 text-[16px] max-w-2xl mx-auto">From real-time inventory tracking to AI-powered sales forecasting — FruitIQ gives Davao fruit vendors an enterprise-grade edge.</p>
+            <p class="text-gray-500 text-[16px] max-w-2xl mx-auto">From real-time inventory tracking to AI-powered sales forecasting — FreshTrack gives Davao fruit vendors an enterprise-grade edge.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach([
@@ -245,7 +245,7 @@
                 <div class="flex items-center gap-3 mb-4">
                     <div class="w-10 h-10 g-violet rounded-xl flex items-center justify-center text-xl">🍋</div>
                     <div>
-                        <p class="font-black text-[15px]" style="font-family:Poppins,sans-serif">FruitIQ</p>
+                        <p class="font-black text-[15px]" style="font-family:Poppins,sans-serif">FreshTrack</p>
                         <p class="text-violet-400 text-[10px] font-semibold">AI-Powered Platform</p>
                     </div>
                 </div>
@@ -263,7 +263,7 @@
             @endforeach
         </div>
         <div class="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p class="text-gray-500 text-[12.5px]">© 2026 FruitIQ — Capstone Project · All rights reserved · Davao City, Philippines</p>
+            <p class="text-gray-500 text-[12.5px]">© 2026 FreshTrack — Capstone Project · All rights reserved · Davao City, Philippines</p>
             <div class="flex items-center gap-2">
                 <span class="w-2 h-2 bg-green-400 rounded-full" style="animation:pulseDot 2.2s infinite"></span>
                 <span class="text-green-400 text-[12px] font-semibold">System Online</span>

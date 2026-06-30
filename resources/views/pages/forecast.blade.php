@@ -1,9 +1,11 @@
 ﻿<x-app-layout>
-<x-slot name="title">AI Sales Forecast — FruitIQ</x-slot>
+<x-slot name="title">AI Sales Forecast — FreshTrack</x-slot>
 
 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-7 fade-up">
     <div class="flex items-center gap-4">
-        <div class="w-12 h-12 g-indigo rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200/60 text-2xl">🔮</div>
+        <div class="w-12 h-12 bg-gray-100 border border-gray-200 rounded-2xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
         <div>
             <h1 class="text-[26px] font-black text-gray-900">AI Sales Forecast</h1>
             <p class="text-[13.5px] text-gray-500 mt-0.5">Machine learning predictions · Updated Jun 23, 2026 · 96.4% accuracy</p>
@@ -22,9 +24,15 @@
 
 {{-- Summary Cards --}}
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-7 fade-up delay-1">
-@foreach([['Predicted Sales','₱127,400','🎯','g-indigo','Next 7 days'],['Expected Revenue','₱142,800','💰','g-green','+12.3% vs last week'],['Demand Level','High ↑','📊','g-orange','Peak season'],['Forecast Accuracy','96.4%','✅','g-violet','Model confidence']] as [$l,$v,$i,$g,$s])
+@foreach([['Predicted Sales','₱127,400','target','g-indigo','Next 7 days'],['Expected Revenue','₱142,800','money','g-green','+12.3% vs last week'],['Demand Level','High ↑','chart','g-orange','Peak season'],['Forecast Accuracy','96.4%','check','g-violet','Model confidence']] as [$l,$v,$i,$g,$s])
 <div class="card shimmer card-lift p-5">
-    <div class="stat-ring {{ $g }} mb-3 w-11 h-11 rounded-xl shadow-md"><span class="text-xl">{{ $i }}</span></div>
+    <div class="icon-ring mb-3">
+        @if($i==='target')<svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        @elseif($i==='money')<svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        @elseif($i==='chart')<svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        @elseif($i==='check')<svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        @endif
+    </div>
     <p class="text-[24px] font-black text-gray-900">{{ $v }}</p>
     <p class="text-[12.5px] font-semibold text-gray-600">{{ $l }}</p>
     <p class="text-[11.5px] text-gray-400 mt-0.5">{{ $s }}</p>
@@ -71,29 +79,29 @@
             <tbody>
 @php
 $fc=[
-    ['🥭','Mango','42 kg','58 kg','+16 kg','↑ Rising','96%','Increase stock 30%','badge-green'],
-    ['🍑','Durian','28 kg','24 kg','-4 kg','↓ Declining','94%','Reduce order quantity','badge-red'],
-    ['🍈','Pomelo','12 kg','20 kg','+8 kg','↑ Rising','98%','Restock urgently','badge-green'],
-    ['🍊','Mangosteen','35 kg','38 kg','+3 kg','→ Stable','97%','Maintain current stock','badge-blue'],
-    ['🫐','Lanzones','18 kg','22 kg','+4 kg','↑ Rising','95%','Order 20 kg more','badge-green'],
-    ['🍍','Pineapple','25 kg','20 kg','-5 kg','↓ Declining','93%','Apply 10% discount','badge-amber'],
-    ['🍌','Banana','55 kg','60 kg','+5 kg','↑ Rising','96%','Increase to 80 kg','badge-green'],
+    ['Mango','42 kg','58 kg','+16 kg','↑ Rising','96%','Increase stock 30%','badge-green'],
+    ['Durian','28 kg','24 kg','-4 kg','↓ Declining','94%','Reduce order quantity','badge-red'],
+    ['Pomelo','12 kg','20 kg','+8 kg','↑ Rising','98%','Restock urgently','badge-green'],
+    ['Mangosteen','35 kg','38 kg','+3 kg','→ Stable','97%','Maintain current stock','badge-blue'],
+    ['Lanzones','18 kg','22 kg','+4 kg','↑ Rising','95%','Order 20 kg more','badge-green'],
+    ['Pineapple','25 kg','20 kg','-5 kg','↓ Declining','93%','Apply 10% discount','badge-amber'],
+    ['Banana','55 kg','60 kg','+5 kg','↑ Rising','96%','Increase to 80 kg','badge-green'],
 ];
 @endphp
 @foreach($fc as $f)
 <tr>
-    <td><div class="flex items-center gap-2"><span class="text-xl">{{ $f[0] }}</span><span class="font-semibold text-gray-800 text-[13.5px]">{{ $f[1] }}</span></div></td>
-    <td class="text-gray-500 text-[13px]">{{ $f[2] }}</td>
-    <td class="font-bold text-gray-900">{{ $f[3] }}</td>
-    <td><span class="font-bold {{ str_starts_with($f[4],'+') ? 'text-green-600' : 'text-red-500' }}">{{ $f[4] }}</span></td>
-    <td><span class="font-semibold text-[13px] {{ $f[5][0]==='↑' ? 'text-green-600' : ($f[5][0]==='↓' ? 'text-red-500' : 'text-blue-600') }}">{{ $f[5] }}</span></td>
+    <td><div class="flex items-center gap-2"><div class="w-8 h-8 bg-gradient-to-br from-green-400 to-teal-500 rounded-xl flex items-center justify-center"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div><span class="font-semibold text-gray-800 text-[13.5px]">{{ $f[0] }}</span></div></td>
+    <td class="text-gray-500 text-[13px]">{{ $f[1] }}</td>
+    <td class="font-bold text-gray-900">{{ $f[2] }}</td>
+    <td><span class="font-bold {{ str_starts_with($f[3],'+') ? 'text-green-600' : 'text-red-500' }}">{{ $f[3] }}</span></td>
+    <td><span class="font-semibold text-[13px] {{ $f[4][0]==='↑' ? 'text-green-600' : ($f[4][0]==='↓' ? 'text-red-500' : 'text-blue-600') }}">{{ $f[4] }}</span></td>
     <td>
         <div class="flex items-center gap-2">
-            <div class="progress-bar w-16"><div class="progress-fill bg-violet-600" style="width:{{ $f[6] }}"></div></div>
-            <span class="text-[12px] font-bold text-gray-700">{{ $f[6] }}</span>
+            <div class="progress-bar w-16"><div class="progress-fill bg-violet-600" style="width:{{ $f[5] }}"></div></div>
+            <span class="text-[12px] font-bold text-gray-700">{{ $f[5] }}</span>
         </div>
     </td>
-    <td><span class="badge {{ $f[8] }} text-[11px]">{{ $f[7] }}</span></td>
+    <td><span class="badge {{ $f[7] }} text-[11px]">{{ $f[6] }}</span></td>
 </tr>
 @endforeach
             </tbody>
